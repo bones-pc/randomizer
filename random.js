@@ -1,4 +1,5 @@
 const ervy = require("ervy");
+const readline = require("readline");
 const { bullet, bar, bg } = ervy;
 const fs = require("fs");
 
@@ -77,16 +78,48 @@ function drawData(a, person) {
     console.log(bullet(chart_data));
 }
 
+async function userAcceped() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
+    async function getUserInput() {
+        return new Promise((resolve) => {
+            rl.question("Is ok? y/n ", (answer) => {
+                resolve(answer);
+            });
+        });
+    }
+    while (true) {
+        const result = await getUserInput();
+        if (result === "y" || result === "Y") {
+            rl.close();
+            return true;
+        }
+        if (result === "n" || result === "N") {
+            rl.close();
+            return false;
+        }
+    }
+}
+
 async function go(initialize) {
     if (initialize) {
         await init();
         return;
     }
-    let a = await readFromFile(file);
-    let person = search_person(a);
-    console.log(`\n\n\n\nWinner --------->    ${a[person].name}\n\n\n`);
-    change_ranges(a, person);
-    drawData(a, person);
+    let a;
+    let accept = false;
+    while (!accept) {
+        a = await readFromFile(file);
+        let person = search_person(a);
+        console.log(`\n\n\n\nWinner --------->    ${a[person].name}\n\n\n`);
+        change_ranges(a, person);
+        drawData(a, person);
+        accept = await userAcceped();
+    }
+
     let result = writeToFile(file, a);
 }
 
