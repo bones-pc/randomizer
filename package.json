@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cli-chart": "^0.3.1",
+    "ervy": "^1.0.7"
+  }
+}
