@@ -57,7 +57,24 @@ async function init() {
     for (let o of a) {
         o.range = range;
     }
+    drawData(a);
     await writeToFile(file, a);
+}
+
+function drawData(a, person) {
+    if (!person) person = 0;
+    const chart_data = a.map((i) => {
+        let colour = "blue";
+        if (i.name == a[person].name) colour = "red";
+        return {
+            key: `${i.name}, picked: ${i.picked}, chance: ${Math.floor(
+                100 * i.range
+            )}%`,
+            value: i.picked,
+            style: bg(colour),
+        };
+    });
+    console.log(bullet(chart_data));
 }
 
 async function go(initialize) {
@@ -67,30 +84,13 @@ async function go(initialize) {
     }
     let a = await readFromFile(file);
     let person = search_person(a);
-    console.log(`Winner: ${a[person].name}`);
+    console.log(`\n\n\n\nWinner --------->    ${a[person].name}\n\n\n`);
     change_ranges(a, person);
-    const chart_data = a.map((i) => {
-        if (i.name == a[person].name) {
-            return {
-                key: `${i.name}  ${i.picked}`,
-                value: i.picked,
-                style: bg("red"),
-            };
-        } else {
-            return {
-                key: i.name + " " + i.picked,
-                value: i.picked,
-                style: bg("blue"),
-            };
-        }
-    });
-
-    console.log(bullet(chart_data));
-
+    drawData(a, person);
     let result = writeToFile(file, a);
 }
 
 const file = "random.json";
 // set to true / 1 to reset
-const initialize = 0;
+const initialize = 1;
 go(initialize);
