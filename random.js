@@ -125,5 +125,5 @@ async function go(initialize) {
 
 const file = "random.json";
 // set to true / 1 to reset
-const initialize = 1;
+const initialize = 0;
 go(initialize);
