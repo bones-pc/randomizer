@@ -19,7 +19,7 @@ function search_person(a) {
 }
 
 function change_ranges(a, k) {
-    let new_range = a[k].range / 2;
+    let new_range = a[k].range / DIVIDED_BY;
     a[k].range = new_range;
     a.forEach((e, i) => {
         if (i == k) return;
@@ -62,8 +62,12 @@ async function init() {
     await writeToFile(file, a);
 }
 
-function drawData(a, person) {
+function drawData(a, person, small) {
     if (!person) person = 0;
+    let opts = { padding: 1 };
+    if (small) {
+        opts = { padding: 0 };
+    }
     const chart_data = a.map((i) => {
         let colour = "blue";
         if (i.name == a[person].name) colour = "red";
@@ -75,10 +79,10 @@ function drawData(a, person) {
             style: bg(colour),
         };
     });
-    console.log(bullet(chart_data));
+    console.log(bullet(chart_data, opts));
 }
 
-async function userAcceped() {
+async function userAccepted(text) {
     const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -86,7 +90,7 @@ async function userAcceped() {
 
     async function getUserInput() {
         return new Promise((resolve) => {
-            rl.question("Is ok? y/n ", (answer) => {
+            rl.question(text, (answer) => {
                 resolve(answer);
             });
         });
@@ -111,18 +115,24 @@ async function go(initialize) {
     }
     let a;
     let accept = false;
+
     while (!accept) {
         a = await readFromFile(file);
+        console.log(`Last time: `);
+        drawData(a, 0, true);
+        console.log();
+        const draw = await userAccepted("Press 'y' to draw...");
         let person = search_person(a);
         console.log(`\n\n\n\nWinner --------->    ${a[person].name}\n\n\n`);
         change_ranges(a, person);
-        drawData(a, person);
-        accept = await userAcceped();
+        drawData(a, person, false);
+        accept = await userAccepted("Is it ok? y/n");
     }
 
     let result = writeToFile(file, a);
 }
 
+const DIVIDED_BY = 2;
 const file = "random.json";
 // set to true / 1 to reset
 const initialize = 0;
