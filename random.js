@@ -132,15 +132,16 @@ async function go(initialize) {
 
   while (!accept) {
     a = await readFromFile(file);
+    // name = a.filter((p) => p?.last)[0].name;
     console.log(`Last time: `);
     drawData(a, 0, true);
     console.log();
-    const draw = await userAccepted("Press 'y' to draw...");
+    const draw = await userAccepted("Press 'y' to draw...   ");
     let person = search_person(a);
     console.log(`\n\n\n\nWinner --------->    ${a[person].name}\n\n\n`);
     change_ranges(a, person);
-    drawData(a, person, false);
-    accept = await userAccepted("Is it ok? y/n");
+    drawData(a, person, true);
+    accept = await userAccepted("Is it ok? (y/n)   ");
   }
 
   let result = writeToFile(file, a);
