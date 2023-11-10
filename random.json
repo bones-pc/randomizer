@@ -1,1 +1,9 @@
-[{"picked":4,"name":"Hubert","range":0.16281927899667856},{"picked":4,"name":"Karol","range":0.11235275812611141},{"picked":4,"name":"Mariusz","range":0.07703277718451441},{"picked":4,"name":"Piotr C","range":0.10302607125975896},{"picked":2,"name":"Piotr K","range":0.2212475842728389},{"picked":4,"name":"Rafał","range":0.08933119356565757},{"picked":2,"name":"Rushil","range":0.2341903365944401}]
+[
+  { "picked": 5, "name": "Hubert", "range": 0.08980002905884728 },
+  { "picked": 4, "name": "Karol", "range": 0.13297468635739126 },
+  { "picked": 3, "name": "Mariusz", "range": 0.1875262787977278 },
+  { "picked": 5, "name": "Piotr C", "range": 0.07847551655991929 },
+  { "picked": 4, "name": "Piotr K", "range": 0.05721697234051199 },
+  { "picked": 3, "name": "Rafał", "range": 0.19919425205988237 },
+  { "picked": 2, "name": "Rushil", "range": 0.25481226482572 }
+]
