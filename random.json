@@ -1,9 +1,1 @@
-[
-  { "picked": 5, "name": "Hubert", "range": 0.08980002905884728 },
-  { "picked": 4, "name": "Karol", "range": 0.13297468635739126 },
-  { "picked": 3, "name": "Mariusz", "range": 0.1875262787977278 },
-  { "picked": 5, "name": "Piotr C", "range": 0.07847551655991929 },
-  { "picked": 4, "name": "Piotr K", "range": 0.05721697234051199 },
-  { "picked": 3, "name": "Rafał", "range": 0.19919425205988237 },
-  { "picked": 2, "name": "Rushil", "range": 0.25481226482572 }
-]
+[{"picked":6,"name":"Hubert","range":0.04490001452942364},{"picked":4,"name":"Karol","range":0.14045802211229522},{"picked":3,"name":"Mariusz","range":0.19500961455263174},{"picked":5,"name":"Piotr C","range":0.08595885231482323},{"picked":4,"name":"Piotr K","range":0.06470030809541594},{"picked":3,"name":"Rafał","range":0.20667758781478632},{"picked":2,"name":"Rushil","range":0.26229560058062396}]
