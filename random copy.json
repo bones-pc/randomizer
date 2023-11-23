@@ -1,11 +1,1 @@
-[
-  { "picked": 1, "name": "Hubert", "range": 0.11316819141049765 },
-  { "picked": 2, "name": "Karol", "range": 0.04518416886114412 },
-  { "picked": 2, "name": "Kush", "range": 0.044509774319724076 },
-  { "picked": 1, "name": "Mariusz", "range": 0.10070176074643515 },
-  { "picked": 0, "name": "Piotr C", "range": 0.17566819141049764 },
-  { "picked": 1, "name": "Piotr K", "range": 0.10926194141049765 },
-  { "picked": 2, "name": "Rafał", "range": 0.06016958902020835 },
-  { "picked": 0, "name": "Rushil", "range": 0.17566819141049764 },
-  { "picked": 0, "name": "Seba", "range": 0.17566819141049764 }
-]
+[{"picked":2,"name":"Hubert","range":0.09855359445965853,"last":false},{"picked":2,"name":"Karol","range":0.10235330086480524,"last":false},{"picked":4,"name":"Kush","range":0.04340939502416399,"last":false},{"picked":1,"name":"Mariusz","range":0.15787089275009625,"last":false},{"picked":1,"name":"Piotr C","range":0.13402396574575381,"last":false},{"picked":2,"name":"Piotr K","range":0.08025830824536835,"last":false},{"picked":4,"name":"Rafał","range":0.029282358095992746,"last":true},{"picked":1,"name":"Rushil","range":0.12141086140000226,"last":false},{"picked":0,"name":"Seba","range":0.23283732341415875,"last":false}]

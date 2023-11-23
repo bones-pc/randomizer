@@ -18,11 +18,15 @@ function search_person(a) {
     return k--;
 }
 
-function change_ranges(a, k) {
-    let new_range = a[k].range / DIVIDED_BY;
-    a[k].range = new_range;
+function change_ranges(a, person) {
+    let new_range = a[person].range / DIVIDED_BY;
+    a[person].range = new_range;
     a.forEach((e, i) => {
-        if (i == k) return;
+        e.last = false;
+        if (i == person) {
+            e.last = true;
+            return;
+        }
         e.range += new_range / (a.length - 1);
     });
     return;
@@ -63,6 +67,7 @@ async function init() {
 }
 
 function drawData(a, person, small) {
+    let sum = 0;
     if (!person) person = 0;
     let opts = { padding: 1 };
     if (small) {
@@ -70,16 +75,18 @@ function drawData(a, person, small) {
     }
     const chart_data = a.map((i) => {
         let colour = "blue";
+        sum += i.range;
         if (i.name == a[person].name) colour = "red";
         return {
-            key: `${i.name}, picked: ${i.picked}, chance: ${Math.floor(
+            key: `\t${i.name}, picked: ${i.picked},\t chance: ${Math.floor(
                 100 * i.range
-            )}%`,
+            )}% \t`,
             value: i.picked,
             style: bg(colour),
         };
     });
     console.log(bullet(chart_data, opts));
+    console.log(Math.floor(sum * 100), "%");
 }
 
 async function removePerson(name) {
@@ -134,7 +141,12 @@ async function go(initialize) {
         a = await readFromFile(file);
         // name = a.filter((p) => p?.last)[0].name;
         console.log(`Last time: `);
-        drawData(a, 0, true);
+        const lastPerson = a.filter((p) => p.last)[0].name;
+        let lastIndex = 0;
+        a.forEach((v, i) => {
+            if (v.name == lastPerson) lastIndex = i;
+        });
+        drawData(a, lastIndex, true);
         console.log();
         const draw = await userAccepted("Press 'y' to draw...   ");
         let person = search_person(a);
